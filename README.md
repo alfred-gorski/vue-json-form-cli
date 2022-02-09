@@ -1,5 +1,7 @@
 # vue-json-form-cli
 
+the default git branch is `dev`
+
 ## Project dependencies
 
 [node and pnpm](https://pnpm.io/installation)
@@ -21,6 +23,8 @@ pnpm run serve
 ```
 pnpm run build
 ```
+
+It will generate directory `dist`, copy it to backend project.
 
 ### Lints and fixes files
 
