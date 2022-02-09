@@ -5,21 +5,22 @@
     <teleport to="body">
       <el-drawer
         v-model="drawer"
-        title="Edit Optinos"
+        title="JSON Schema"
         :direction="'rtl'"
         :before-close="handleClose"
       >
-        <p>Autosave</p>
         <el-input
           v-model="textarea"
           :rows="8"
           df-script
           type="textarea"
           placeholder="Please input"
-          @change="updateSelect"
         />
         <el-button type="info" size="small" @click="redirect"
           >Check Form</el-button
+        >
+        <el-button type="info" size="small" @click="updateSelect"
+          >Upload</el-button
         >
       </el-drawer>
     </teleport>
@@ -54,8 +55,8 @@ const handleClose = (done) => {
 };
 df = getCurrentInstance().appContext.config.globalProperties.$df.value;
 
-const updateSelect = (value) => {
-  dataNode.value.data.schema = JSON.stringify(JSON.parse(value));
+const updateSelect = () => {
+  dataNode.value.data.schema = JSON.stringify(JSON.parse(textarea.value));
   df.updateNodeDataFromId(nodeId.value, dataNode.value.data);
   axios.put(`${url}/nodes/${dataNode.value.data.id}`, dataNode.value.data);
 };
